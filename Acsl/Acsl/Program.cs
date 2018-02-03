@@ -11,14 +11,25 @@ namespace Acsl
     {
         static void Main(string[] args)
         {
-            String input = File.ReadAllText(@"C:\Users\eahscs\Desktop\text.txt.txt");
+            String input = File.ReadAllText(@"C:\Users\User\Desktop\text.txt.txt.txt");
             String[] lines = input.Split('\n');
             List<int> pos = new List<int> { };
-            bool lp = false, rp = false, lb = false, rb = false, lc = false, rc = false;
-            for(int i = 0; i < lines.Length; i++)
+           
+            
+            for (int i = 0; i < lines.Length; i++)
             {
+                pos.Clear();
+                int meh = 0;
+                bool lp = false;
+                bool rp = false;
+                bool lb = false;
+                bool rb = false;
+                bool lc = false;
+                bool rc = false;
+
                 lines[i] = lines[i].Replace(" ", "");
                 String line = lines[i];
+
                 if (lines[i].Contains("("))
                 {
                     lp = true;
@@ -45,37 +56,170 @@ namespace Acsl
                 }
 
 
-                if(lb = true && rb == false)
+                if (lb == true && rb == false)
                 {
-                    
-                    for(int j = 0; j < line.Length; j++)
+
+                    for (int j = 0; j < line.Length; j++)
                     {
-                        if(line.IndexOf(")") < j)
+                        if (line.IndexOf(")") < j && line.IndexOf("}") + 1 > j)
                         {
                             if (("+-/*}".Contains(line.Substring(j, 1))))
                             {
                                 pos.Add(j + 1);
+                                
+
                             }
 
                         }
                     }
                 }
 
-                if(lp == false && rp == true)
+                if (lp == true && rp == false)
                 {
+
+                    for (int j = 0; j < line.Length; j++)
+                    {
+
+                        if (line.IndexOf("(") < j && line.IndexOf("]") + 1 > j)
+                        {
+                            if ("+-/*]".Contains(line.Substring(j, 1)))
+                            {
+                                meh++;
+                            }
+
+                            if (("+-/*]".Contains(line.Substring(j, 1))) && meh > 1)
+                            {
+
+                                pos.Add(j + 1);
+                                
+                            }
+
+                        }
+                    }
+                }
+
+                if (lc == true && rc == false)
+                {
+                    for (int j = 0; j < line.Length; j++)
+                    {
+                        if (line.IndexOf("]") < j)
+                        {
+                            if (("+-/*}".Contains(line.Substring(j, 1))))
+                            {
+                                pos.Add(j + 1);
+                                
+                            }
+
+                        }
+                    }
+
+                    pos.Add(line.Length);
 
                 }
-            
 
-                for(int j = 0; j < pos.Count - 1; j++)
+                if (lp == false && rp == true)
                 {
-                    Console.Write(pos[j] + ", ");
+                    for (int j = line.Length; j >= 0; j--)
+                    {
+                        if (j >= line.IndexOf("[") && j < line.IndexOf(")") )
+                        {
+                            
+
+                            if (("+-/*[".Contains(line.Substring(j -1, 1))) && meh > 0)
+                            {
+                                pos.Add(j + 1);
+                              
+                            }
+
+                            if ("+-/*[".Contains(line.Substring(j - 1, 1)))
+                            {
+                                meh++;
+                            }
+
+
+                        }
+
+
+                    }
+
+             
+                }
+
+                if (lb == false && rb == true)
+                {
+                    for (int j = line.Length - 1; j >= 0; j--)
+                    {
+                        if (line.IndexOf("(")+1 > j && j> line.IndexOf("{") )
+                        {
+                            if ("+-/*{".Contains(line.Substring(j, 1)))
+                            {
+                                meh++;
+                            }
+
+
+
+                            if ( j !=0 && ("+-/*{".Contains(line.Substring(j-1 , 1))) && meh > 0)
+                            {
+                                pos.Add(j + 1);
+                            }
+
+                           
+
+                        }
+                        if((line.IndexOf("]") > j && line.IndexOf(")") < j))
+                        {
+                            if ("+-/*(".Contains(line.Substring(j, 1)))
+                            {
+                                meh++;
+                            }
+
+
+
+                            if (j != 0 && ("+-/*(".Contains(line.Substring(j - 1, 1))) && meh > 0)
+                            {
+                                pos.Add(j + 1);
+                            }
+                        }
+
+                    }
+                }
+
+                if (lc == false && rc == true)
+                {
+                    for (int j = line.Length; j >= 0; j--)
+                    {
+                        if (j < line.IndexOf("[") + 1)
+                        {
+                            if ((j != 0 && "+-/*[".Contains(line.Substring(j - 1 , 1))) )
+                            {
+                                pos.Add(j + 1);
+                            }
+
+                            
+                        }
+                    }
+                    pos.Add(1);
+                }
+
+                    pos.Sort();
+
+                for (int j = 0; j < pos.Count  ; j++)
+                {
+                    if (j == 0)
+                    {
+                        Console.Write(pos[j]);
+                    }
+                    else
+                    {
+                        Console.Write(", " +pos[j] );
+                    }
+                }
+                Console.WriteLine();
+
                 
-                }
-                Console.WriteLine(pos[pos.Count-1]);
-               
-            }
-            
+                
+
+           }
 
         }
     }

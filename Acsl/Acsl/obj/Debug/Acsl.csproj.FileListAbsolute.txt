@@ -10,3 +10,10 @@ C:\Users\eahscs\Documents\GitHub\ACSLProblem\Acsl\Acsl\bin\Debug\Acsl.pdb
 C:\Users\eahscs\Documents\GitHub\ACSLProblem\Acsl\Acsl\obj\Debug\Acsl.csprojResolveAssemblyReference.cache
 C:\Users\eahscs\Documents\GitHub\ACSLProblem\Acsl\Acsl\obj\Debug\Acsl.exe
 C:\Users\eahscs\Documents\GitHub\ACSLProblem\Acsl\Acsl\obj\Debug\Acsl.pdb
+C:\Users\User\Documents\GitHub\ACSLProblem\Acsl\Acsl\bin\Debug\Acsl.exe.config
+C:\Users\User\Documents\GitHub\ACSLProblem\Acsl\Acsl\bin\Debug\Acsl.exe
+C:\Users\User\Documents\GitHub\ACSLProblem\Acsl\Acsl\bin\Debug\Acsl.pdb
+C:\Users\User\Documents\GitHub\ACSLProblem\Acsl\Acsl\obj\Debug\Acsl.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\ACSLProblem\Acsl\Acsl\obj\Debug\Acsl.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\ACSLProblem\Acsl\Acsl\obj\Debug\Acsl.exe
+C:\Users\User\Documents\GitHub\ACSLProblem\Acsl\Acsl\obj\Debug\Acsl.pdb
